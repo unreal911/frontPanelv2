@@ -6,6 +6,7 @@ import { CategoriasComponent } from './mantenimiento/categorias/categorias.compo
 import { ProductosComponent } from './mantenimiento/productos/productos.component';
 import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ], exports: [
     DashboardComponent,
     UsuariosComponent,
