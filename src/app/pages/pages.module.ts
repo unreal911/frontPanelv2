@@ -7,6 +7,7 @@ import { ProductosComponent } from './mantenimiento/productos/productos.componen
 import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -21,7 +22,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+      HttpClientModule
   ], exports: [
     DashboardComponent,
     UsuariosComponent,

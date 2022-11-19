@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms'
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2'
 @Component({
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   }, {
     Validators: this.passwordsIguales
   })
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private authService: AuthService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -40,6 +41,7 @@ export class RegisterComponent implements OnInit {
         icon: 'success',
         confirmButtonText: 'Cool'
       })
+      this.router.navigateByUrl('/login')
     }, (err) => {
       console.log(err.error.errors)
       let campo = err.error.errors

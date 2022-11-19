@@ -6,6 +6,7 @@ import { loginResp } from '../interfaces/loginResp.interface';
 import { registerForm } from '../interfaces/registerForm.interface';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
+import { listarUsuarios } from '../interfaces/usuario.interface';
 const base_url = environment.base_url
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,12 @@ export class AuthService {
   constructor(private http: HttpClient) {
     console.log('http')
   }
-  get token(){
+  get token() {
     return localStorage.getItem('token') || ''
   }
-  guardarLocalStorage( token: string ) {
+  guardarLocalStorage(token: string) {
 
-    localStorage.setItem('token', token );
+    localStorage.setItem('token', token);
 
   }
   login(usuario: login) {
@@ -36,18 +37,25 @@ export class AuthService {
 
   validarToken(): Observable<boolean> {
 
-    return this.http.get(`${ base_url }/auth/renovarToken`, {
+    return this.http.get(`${base_url}/auth/renovarToken`, {
       headers: {
         'x-token': this.token
       }
     }).pipe(
-      map( (resp: any) => {
+      map((resp: any) => {
         console.log(resp)
 
         return true;
       }),
-      catchError( error => of(false) )
+      catchError(error => of(false))
     );
 
+  }
+  listarUsuarios(limite: number, desde: number) {
+    return this.http.get<listarUsuarios>(`${base_url}/usuario?limite=${limite}&desde=${desde}`, {
+      headers: {
+        'x-token': this.token
+      }
+    })
   }
 }
