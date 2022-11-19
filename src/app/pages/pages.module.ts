@@ -8,6 +8,7 @@ import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     RouterModule,
     SharedModule,
-      HttpClientModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ], exports: [
     DashboardComponent,
     UsuariosComponent,

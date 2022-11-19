@@ -30,15 +30,69 @@
                 <td>{{usuario.google}}</td>
                 <td>{{usuario.estado}}</td>
                 <td class="text-nowrap">
-                  <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i
+                  <a (click)="usuarioSeleccionado(usuario)" data-original-title="Edit" data-toggle="modal"
+                    data-target="#exampleModal" data-whatever="@getbootstrap"> <i
                       class="fa fa-pencil text-inverse m-r-10"></i> </a>
                   <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i>
                   </a>
                 </td>
               </tr>
             </tbody>
+
           </table>
+          <button type="button" class="btn btn-outline-primary">crear Usuario</button>
+
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+  style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel1">{{usuario.nombre}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">nombre:</label>
+            <input type="text" class="form-control" id="nombre" [value]="usuario.nombre">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">email:</label>
+            <input type="text" class="form-control" id="email" [value]="usuario.email">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">estado:</label>
+            <input type="text" class="form-control" id="estado" [value]="usuario.estado">
+          </div>
+          <div class="form-group">
+            <div class="col-sm-3">
+              <div class="demo-switch-title">estado</div>
+              <div class="switch">
+                  <label>
+                      <input [value]="usuario.estado" type="checkbox" checked=""><span class="lever switch-col-purple"></span></label>
+              </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="" class="form-label">Rol</label>
+              <select [(ngModel)]="usuario.rol" name="comborol" class="form-control">
+                <option *ngFor="let item of selectOptions" [value]="item.valor">{{item.label}}</option>
+              </select>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
       </div>
     </div>
   </div>
