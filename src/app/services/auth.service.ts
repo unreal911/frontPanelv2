@@ -58,4 +58,11 @@ export class AuthService {
       }
     })
   }
+  actualizarUsuario(usuarioUpdate: Usuario,uid:string) {
+    return this.http.put(`${base_url}/usuario/${uid}`, usuarioUpdate, {
+      headers: {
+        'x-token': this.token
+      }
+    })
+  }
 }

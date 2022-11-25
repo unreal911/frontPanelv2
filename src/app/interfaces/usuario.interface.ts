@@ -3,6 +3,7 @@ export interface listarUsuarios {
   msg:      string;
   Usuarios: Usuario[];
   total:    number;
+  paginas:number
 }
 
 export interface Usuario {
