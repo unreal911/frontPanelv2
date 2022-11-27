@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    
+   
+
     //TODO: Ver en el curso por que no se necesita suscribirse
   }
 

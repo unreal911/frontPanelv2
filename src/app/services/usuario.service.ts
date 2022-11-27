@@ -95,9 +95,9 @@ export class UsuarioService {
       );
 
   }
-  cargarUsuarios(desde: number = 0) {
+  cargarUsuarios(desde: number = 0,limite:number=5) {
 
-    const url = `${base_url}/usuarios?desde=${desde}`;
+    const url = `${base_url}/usuario/listar/${limite}/${desde}`;
     return this.http.get<CargarUsuarios>(url, this.headers)
       .pipe(
         map(resp => {

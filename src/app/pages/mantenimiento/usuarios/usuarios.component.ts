@@ -4,6 +4,7 @@ import { finalize } from 'rxjs';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { BusquedasService } from 'src/app/services/busquedas.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 declare var $: any;
 @Component({
@@ -13,8 +14,13 @@ declare var $: any;
 })
 export class UsuariosComponent implements OnInit {
 
-  ngOnInit(): void {
+  constructor(private usuarioServices: UsuarioService) {
 
+  }
+  ngOnInit(): void {
+    this.usuarioServices.cargarUsuarios().subscribe((resp) => {
+      console.log(resp)
+    })
 
   }
 
