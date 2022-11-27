@@ -8,24 +8,9 @@ export class Usuario {
         public nombre: string,
         public email: string,
         public password?: string,
-        public img?: string,
-        public google?: boolean,
-        public rol?: 'ADMIN_ROLE' | 'USER_ROLE',
+        public img?: object,
+        public rol?: string,
         public uid?: string,
-        public estado?:boolean
     ) {}
-
-    get imagenUrl() {
-
-        if ( !this.img ) {
-            return `${ base_url }/upload/usuarios/no-image`;
-        } else if ( this.img.includes('https') ) {
-            return this.img;
-        } else if ( this.img ) {
-            return `${ base_url }/upload/usuarios/${ this.img }`;
-        } else {
-            return `${ base_url }/upload/usuarios/no-image`;
-        }
-    }
 }
 

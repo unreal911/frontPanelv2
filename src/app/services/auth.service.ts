@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import { login } from '../interfaces/login.interface';
+
 import { loginResp } from '../interfaces/loginResp.interface';
 import { registerForm } from '../interfaces/registerForm.interface';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
-import { listarUsuarios } from '../interfaces/usuario.interface';
+
 const base_url = environment.base_url
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,16 @@ const base_url = environment.base_url
 
 export class AuthService {
   public auth2: any;
-  public usuario: any;
+  public usuarioAuth: any;
   constructor(private http: HttpClient) {
     console.log('http')
+  }
+  get headers() {
+    return {
+      headers: {
+        'x-token': this.token
+      }
+    }
   }
   get token() {
     return localStorage.getItem('token') || ''
@@ -27,12 +34,22 @@ export class AuthService {
     localStorage.setItem('token', token);
 
   }
-  login(usuario: login) {
+  login(usuario: any) {
     const url = `${base_url}/auth`
-    return this.http.post<loginResp>(url, usuario)
+    return this.http.post<loginResp>(url, usuario).pipe(
+      tap(
+        resp => {
+          this.guardarLocalStorage(resp.token)
+        }
+      )
+    )
   }
   crearUsuario(usuario: registerForm) {
     return this.http.post(`${base_url}/usuario`, usuario);
+  }
+  eliminarUsuario(id: string) {
+    const url = `${base_url}/usuario/${id}`
+    return this.http.delete(url, this.headers)
   }
 
   validarToken(): Observable<boolean> {
@@ -43,8 +60,10 @@ export class AuthService {
       }
     }).pipe(
       map((resp: any) => {
-        console.log(resp)
 
+        this.usuarioAuth = resp.usuario
+        console.log(this.usuarioAuth)
+        console.log(resp)
         return true;
       }),
       catchError(error => of(false))
@@ -52,13 +71,13 @@ export class AuthService {
 
   }
   listarUsuarios(limite: number, desde: number) {
-    return this.http.get<listarUsuarios>(`${base_url}/usuario?limite=${limite}&desde=${desde}`, {
+    return this.http.get(`${base_url}/usuario?limite=${limite}&desde=${desde}`, {
       headers: {
         'x-token': this.token
       }
     })
   }
-  actualizarUsuario(usuarioUpdate: Usuario,uid:string) {
+  actualizarUsuario(usuarioUpdate: Usuario, uid: string) {
     return this.http.put(`${base_url}/usuario/${uid}`, usuarioUpdate, {
       headers: {
         'x-token': this.token

@@ -1,9 +1,6 @@
-export interface listarUsuarios {
-  ok:       boolean;
-  msg:      string;
-  Usuarios: Usuario[];
+export interface CargarUsuarios {
   total:    number;
-  paginas:number
+  usuarios: Usuario[];
 }
 
 export interface Usuario {
@@ -11,13 +8,11 @@ export interface Usuario {
   email:  string;
   img:    Img;
   rol:    string;
-  google: boolean;
   estado: boolean;
   uid:    string;
 }
 
 export interface Img {
-  id:                 string;
-  url?:               string;
-  original_filename?: string;
+  id:  string;
+  url: string;
 }

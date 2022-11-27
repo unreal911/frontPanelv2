@@ -1,7 +1,7 @@
-export interface login {
+export interface loginForm {
   email: string,
   password: string,
-  recordar: boolean
+  remember: boolean
 }
 
 
