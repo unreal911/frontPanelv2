@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { NofoundComponent } from './nofound/nofound.component';
 import { PagesModule } from './pages/pages.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 
 
@@ -22,6 +25,8 @@ import { PagesModule } from './pages/pages.module';
     AuthModule,
     AppRoutingModule,
     PagesModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
   
 
    ],

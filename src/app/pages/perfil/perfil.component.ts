@@ -28,4 +28,7 @@ export class PerfilComponent implements OnInit {
 
 
   }
+  cancelarimg(){
+    return this.imgTemp=null
+  }
 }
