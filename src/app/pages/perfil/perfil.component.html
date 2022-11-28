@@ -11,7 +11,7 @@
             <input type="file" name="" id="file-input" (change)="cambiarImagen($event)">
           </div>
           <div *ngIf="imgTemp">
-            <button type="button" class="btn waves-effect waves-light btn-rounded btn-success">Subir</button>
+            <button type="button" class="btn waves-effect waves-light btn-rounded btn-success" (click)="subirimg()" >Subir</button>
             <button type="button" class="btn waves-effect waves-light btn-rounded btn-inverse" (click)="cancelarimg()">Cancelar</button>
           </div>
           <h4 class="card-title m-t-10">{{usuario.nombre}}</h4>
