@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col">
+    <div class="mb-3">
+      <div class="card">
+        <div class="card-body">
+          <input type="text" name="" id="" class="form-control" placeholder="Buscar" aria-describedby="helpId"
+            #txtTermino (keyup)="buscar( txtTermino.value)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="alert alert-primary text-center" role="alert" *ngIf="cargando">
+  <h4 class="alert-heading">Cargando</h4>
+  <i class="fa fa-spin fa-refresh fa-2x"></i>
+  <p class="mb-0">Por favor espere</p>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Striped Table</h4>
+        <h6 class="card-subtitle">Add<code>.table-striped</code>for borders on all sides of the table and cells.</h6>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Avatar</th>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th class="text-nowrap">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of usuarios">
+                <td><img src="../assets/images/users/1.jpg" alt="user" width="40" class="img-circle"></td>
+                <td>
+                  {{usuario.email}}
+                </td>
+                <td>{{usuario.nombre}}</td>
+                <td>
+                  <select name="rol" id="" [(ngModel)]="usuario.rol" class="form-control" (change)="cambiarRol(usuario)">
+                    <option value="USER_ROL"> USER ROL</option>
+                    <option value="ADMIN_ROL"> ADMIN ROL</option>
+                    <option value="DEV_ROL"> DEV ROL</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="estado" id="" [(ngModel)]="usuario.estado" class="form-control" (change)="cambiarEstado(usuario)">
+                    <option value="false">Inactivo</option>
+                    <option value="true">activo</option>
+                  </select>
+                </td>
+                <td class="text-nowrap">
+                  <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i
+                      class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                  <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i>
+                  </a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <div *ngIf="txtTermino.value.length === 0">
+            <button (click)="cambiarPagina(-5)" class="btn waves-effect waves-light btn-success">Anteriores</button>
+            &nbsp;
+            <button (click)="cambiarPagina(5)" class="btn waves-effect waves-light btn-success">Siguientes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

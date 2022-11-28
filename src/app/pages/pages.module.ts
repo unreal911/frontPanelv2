@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsuariosComponent,
     CategoriasComponent,
     ProductosComponent,
-    PagesComponent
+    PagesComponent,
+    PerfilComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsuariosComponent,
     CategoriasComponent,
     ProductosComponent,
-    PagesComponent
+    PagesComponent,
+    PerfilComponent
   ]
 })
 export class PagesModule { }

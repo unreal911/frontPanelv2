@@ -95,14 +95,14 @@ export class UsuarioService {
       );
 
   }
-  cargarUsuarios(desde: number = 0,limite:number=5) {
+  cargarUsuarios(desde: number = 0, limite: number = 5) {
 
     const url = `${base_url}/usuario/listar/${limite}/${desde}`;
     return this.http.get<CargarUsuarios>(url, this.headers)
       .pipe(
         map(resp => {
           const usuarios = resp.usuarios.map(
-            user => new Usuario(user.nombre, user.email, '', user.img, user.rol, user.uid)
+            user => new Usuario(user.nombre, user.email, '', user.img, user.rol, user.uid, user.estado)
           );
           return {
             total: resp.total,
@@ -110,6 +110,15 @@ export class UsuarioService {
           };
         })
       )
+  }
+  actualizarRol(usuario: Usuario) {
+    const url = `${base_url}/usuario/rol/${usuario.uid}`
+    return this.http.put(url, usuario, this.headers)
+
+  }
+  actualizarEstado(usuario:Usuario){
+    const url = `${base_url}/usuario/estado/${usuario.uid}`
+    return this.http.put(url,usuario,this.headers)
   }
   eliminarUsuario(usuario: Usuario) {
 

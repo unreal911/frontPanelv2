@@ -20,7 +20,7 @@ export class BusquedasService {
     return localStorage.getItem('token') || ''
   }
   busquedaColeccion(coleccion: string, termino: string) {
-    const url = `${base_url}/busqueda/coleccion/${coleccion}/${termino}`
+    const url = `${base_url}/busqueda/${coleccion}/${termino}`
     return this.http.get(url, this.headers)
 
   }

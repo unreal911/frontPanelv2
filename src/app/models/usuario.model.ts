@@ -11,6 +11,7 @@ export class Usuario {
         public img?: object,
         public rol?: string,
         public uid?: string,
+        public estado?:boolean
     ) {}
 }
 

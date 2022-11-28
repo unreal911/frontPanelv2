@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-lg-4 col-xlg-3 col-md-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="m-t-30 text-center">
+          <div class="image-upload">
+            <label for="file-input">
+            <img *ngIf="!imgTemp" [src]="usuario.img.url" class="img-circle" width="150">
+            <img *ngIf="imgTemp" [src]="imgTemp" class="img-circle" width="150">
+          </label>
+            <input type="file" name="" id="file-input" (change)="cambiarImagen($event)" >
+          </div>
+
+          <h4 class="card-title m-t-10">{{usuario.nombre}}</h4>
+          <h6 class="card-subtitle">{{usuario.rol}}</h6>
+        </div>
+      </div>
+      <div>
+        <hr>
+      </div>
+      <div class="card-body"> <small class="text-muted">Email</small>
+        <h6>{{usuario.email}}</h6> <small class="text-muted p-t-30 db">Phone</small>
+        <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8 col-xlg-9 col-md-7">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Sample Form with the Icons</h4>
+        <form class="form p-t-20">
+          <div class="form-group">
+            <label for="exampleInputuname">Nombre</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input type="text" class="form-control" id="exampleInputuname" placeholder="Nombre">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pwd1">Password</label>
+            <div class="input-group-btn">
+
+              <input type="password" class="form-control" id="pwd1" placeholder="************">
+              <button type="button" id="check-minutes" class="btn waves-effect waves-light btn-success"
+                data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Cambiar</button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar Contraseña</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="password" class="form-control" placeholder="Contrasera Actual">
+              <div class="input-group-addon"><i class="ti-lock"></i></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="password" class="form-control" placeholder="Contraseña Nueva">
+              <div class="input-group-addon"><i class="ti-lock"></i></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="password" class="form-control" placeholder="Repita Contraseña">
+              <div class="input-group-addon"><i class="ti-lock"></i></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
