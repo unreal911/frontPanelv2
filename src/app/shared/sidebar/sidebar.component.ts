@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getDownloadURL, ref, Storage } from '@angular/fire/storage';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -8,12 +9,23 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  public usuarioLogin:any
-  constructor( private usuarioService:UsuarioService) { }
+  public usuarioLogin: any
+  public imagenFirebase:any
+  constructor(private usuarioService: UsuarioService, private storage: Storage) { }
 
   ngOnInit(): void {
-      console.log( this.usuarioService.usuario)
-    this.usuarioLogin=this.usuarioService.usuario
-  }
 
+    this.usuarioLogin = this.usuarioService.usuario
+    console.log(this.usuarioLogin)
+    this.recuperarImagen();
+  }
+  recuperarImagen() {
+
+    getDownloadURL(ref(this.storage, this.usuarioLogin.img.url)).then(
+      (resp) => {
+        console.log(resp)
+        this.imagenFirebase=resp
+      }
+    ).catch(errr => console.log(errr))
+  }
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
+import { getDownloadURL, ref, Storage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -19,10 +20,11 @@ export class UsuarioService {
 
 
   public usuario: any;
-
+  public urlImagenFirebase: any;
   constructor(private http: HttpClient,
     private router: Router,
-    private ngZone: NgZone) {
+    private ngZone: NgZone,
+    private storage: Storage) {
 
   }
 
@@ -40,6 +42,7 @@ export class UsuarioService {
       }
     }
   }
+
   guardarLocalStorage(token: string, menu: any) {
 
     localStorage.setItem('token', token);
@@ -116,9 +119,9 @@ export class UsuarioService {
     return this.http.put(url, usuario, this.headers)
 
   }
-  actualizarEstado(usuario:Usuario){
+  actualizarEstado(usuario: Usuario) {
     const url = `${base_url}/usuario/estado/${usuario.uid}`
-    return this.http.put(url,usuario,this.headers)
+    return this.http.put(url, usuario, this.headers)
   }
   eliminarUsuario(usuario: Usuario) {
 
