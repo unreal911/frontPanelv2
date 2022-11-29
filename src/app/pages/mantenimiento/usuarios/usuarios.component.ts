@@ -20,6 +20,7 @@ export class UsuariosComponent implements OnInit {
   public usuariosTemp: Usuario[] = [];
   public desde: number = 0;
   public cargando: boolean = true;
+  public permisos:boolean=false;
   constructor(private usuarioService: UsuarioService,
     private modalImagenService: ModalImagenService,
     private busquedasService: BusquedasService,
@@ -39,6 +40,9 @@ export class UsuariosComponent implements OnInit {
         this.usuariosTemp = usuarios;
         this.cargando = false;
         console.log(this.usuarios)
+      }, (err) => {
+        console.log(err)
+        this.permisos=true
       })
   }
   cambiarPagina(valor: number) {
@@ -69,10 +73,10 @@ export class UsuariosComponent implements OnInit {
       console.log(resp)
     })
   }
-  cambiarEstado(usuario:Usuario) {
-  this.usuarioService.actualizarEstado(usuario).subscribe((resp)=>{
-    console.log(resp)
-  })
+  cambiarEstado(usuario: Usuario) {
+    this.usuarioService.actualizarEstado(usuario).subscribe((resp) => {
+      console.log(resp)
+    })
   }
 }
 

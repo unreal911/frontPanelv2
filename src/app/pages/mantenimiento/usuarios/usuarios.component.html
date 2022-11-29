@@ -10,18 +10,19 @@
     </div>
   </div>
 </div>
-<div class="alert alert-primary text-center" role="alert" *ngIf="cargando">
+<div class="alert alert-primary text-center" role="alert" *ngIf="cargando && !permisos">
   <h4 class="alert-heading">Cargando</h4>
   <i class="fa fa-spin fa-refresh fa-2x"></i>
   <p class="mb-0">Por favor espere</p>
 </div>
-
-<div class="row">
+<div class="alert alert-danger text-center" role="alert" *ngIf="permisos">
+  <h4 class="alert-heading">No tienes permisos para ver esta informacion</h4>
+</div>
+<div class="row" *ngIf="!permisos">
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Striped Table</h4>
-        <h6 class="card-subtitle">Add<code>.table-striped</code>for borders on all sides of the table and cells.</h6>
+        <h4 class="card-title">Total de usuarios : {{totalUsuarios}}</h4>
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
