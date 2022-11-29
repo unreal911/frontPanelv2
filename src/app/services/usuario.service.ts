@@ -138,5 +138,9 @@ export class UsuarioService {
     const url = `${base_url}/usuario/${usuario.uid}`
     return this.http.put(url, usuario, this.headers)
   }
+  cambiarpassword(uid:string,body:any){
+     const url = `${base_url}/usuario/actualizarpwd/${uid}`
+     return this.http.put(url,body,this.headers)
+  }
 
 }
