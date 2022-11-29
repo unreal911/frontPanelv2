@@ -7,10 +7,19 @@ const url_base = environment.base_url
 })
 export class SubirImagenService {
 
-  constructor( private http:HttpClient) { }
-
-  subirImagen(coleccion:string,data:any){
+  constructor(private http: HttpClient) { }
+  get token(): string {
+    return localStorage.getItem('token') || '';
+  }
+  get headers() {
+    return {
+      headers: {
+        'x-token': this.token
+      }
+    }
+  }
+  subirImagen(coleccion: string, data: any) {
     const url = `${url_base}/subirimagen/${coleccion}/${data.uid}`
-    return  this.http.post(url,data)
+    return this.http.post(url, data, this.headers)
   }
 }

@@ -67,8 +67,8 @@ export class UsuarioService {
       }
     }).pipe(
       map((resp: any) => {
-        const { email, nombre, rol, img = '', telefono, uid } = resp.usuario;
-        this.usuario = new Usuario(nombre, email, '', telefono, img, rol, uid);
+        const { email, nombre, rol, img = '', telefono, uid,estado } = resp.usuario;
+        this.usuario = new Usuario(nombre, email, '', telefono, img, rol, uid,estado);
 
         this.guardarLocalStorage(resp.token, resp.menu);
 

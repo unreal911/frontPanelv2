@@ -135,6 +135,7 @@ export class PerfilComponent implements OnInit {
 
     console.log(this.usuario);
     const deleteref = ref(this.storage, this.usuario.img.url);
+
     await deleteObject(deleteref)
       .then((resp) => console.log('se elimino los archivos'))
       .catch((err) => console.log(err));
