@@ -67,8 +67,8 @@ export class UsuarioService {
       }
     }).pipe(
       map((resp: any) => {
-        const { email, nombre, rol, img = '', uid } = resp.usuario;
-        this.usuario = new Usuario(nombre, email, '', img, rol, uid);
+        const { email, nombre, rol, img = '', telefono, uid } = resp.usuario;
+        this.usuario = new Usuario(nombre, email, '', telefono, img, rol, uid);
 
         this.guardarLocalStorage(resp.token, resp.menu);
 
@@ -105,7 +105,7 @@ export class UsuarioService {
       .pipe(
         map(resp => {
           const usuarios = resp.usuarios.map(
-            user => new Usuario(user.nombre, user.email, '', user.img, user.rol, user.uid, user.estado)
+            user => new Usuario(user.nombre, user.email, '', user.telefono, user.img, user.rol, user.uid, user.estado)
           );
           return {
             total: resp.total,
@@ -134,10 +134,10 @@ export class UsuarioService {
     return this.http.put(`${base_url}/usuarios/${usuario.uid}`, usuario, this.headers);
 
   }
-  actualizarUsuario(usuario:any){
+  actualizarUsuario(usuario: any) {
     const url = `${base_url}/usuario/${usuario.uid}`
-    return this.http.put(url,usuario,this.headers)
-    
+    return this.http.put(url, usuario, this.headers)
+
   }
 
 }

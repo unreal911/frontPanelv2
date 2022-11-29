@@ -29,6 +29,7 @@
                 <th>Avatar</th>
                 <th>Email</th>
                 <th>Nombre</th>
+                <th>telefono</th>
                 <th>Rol</th>
                 <th>Estado</th>
                 <th class="text-nowrap">Action</th>
@@ -41,15 +42,18 @@
                   {{usuario.email}}
                 </td>
                 <td>{{usuario.nombre}}</td>
+                <td>{{usuario.telefono}}</td>
                 <td>
-                  <select name="rol" id="" [(ngModel)]="usuario.rol" class="form-control" (change)="cambiarRol(usuario)">
+                  <select name="rol" id="" [(ngModel)]="usuario.rol" class="form-control"
+                    (change)="cambiarRol(usuario)">
                     <option value="USER_ROL"> USER ROL</option>
                     <option value="ADMIN_ROL"> ADMIN ROL</option>
                     <option value="DEV_ROL"> DEV ROL</option>
                   </select>
                 </td>
                 <td>
-                  <select name="estado" id="" [(ngModel)]="usuario.estado" class="form-control" (change)="cambiarEstado(usuario)">
+                  <select name="estado" id="" [(ngModel)]="usuario.estado" class="form-control"
+                    (change)="cambiarEstado(usuario)">
                     <option value="false">Inactivo</option>
                     <option value="true">activo</option>
                   </select>

@@ -8,6 +8,7 @@ export class Usuario {
         public nombre: string,
         public email: string,
         public password?: string,
+        public telefono?:string,
         public img?: object,
         public rol?: string,
         public uid?: string,

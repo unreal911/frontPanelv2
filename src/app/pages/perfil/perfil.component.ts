@@ -60,10 +60,13 @@ export class PerfilComponent implements OnInit {
     }
 
     const imgRef = ref(this.storage, `images/${this.archivoSubir.name}`);
+
+    console.log(this.usuario)
     const deleteref = ref(this.storage, this.usuario.img.url)
     await deleteObject(deleteref).then(
       resp => console.log('se elimino los archivos')
     ).catch(err => console.log(err))
+
     await uploadBytes(imgRef, this.archivoSubir)
       .then((resp) => {
         let data = {

@@ -8,6 +8,7 @@ export interface Usuario {
   email:  string;
   img:    Img;
   rol:    string;
+  telefono:string;
   estado: boolean;
   uid:    string;
 }
