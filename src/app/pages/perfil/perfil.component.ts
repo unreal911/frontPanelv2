@@ -52,7 +52,7 @@ export class PerfilComponent implements OnInit {
     this.archivoSubir = null;
     return (this.imgTemp = null);
   }
-  subirimg() {
+  async subirimg() {
     console.log(this.archivoSubir);
     if (this.archivoSubir == undefined) {
       Swal.fire('Cuidaddo!!!', 'Aun no seleccionaste nada', 'info')
@@ -60,16 +60,17 @@ export class PerfilComponent implements OnInit {
     }
 
     const imgRef = ref(this.storage, `images/${this.archivoSubir.name}`);
-    uploadBytes(imgRef, this.archivoSubir)
+    const deleteref = ref(this.storage, this.usuario.img.url)
+    await deleteObject(deleteref).then(
+      resp => console.log('se elimino los archivos')
+    ).catch(err => console.log(err))
+    await uploadBytes(imgRef, this.archivoSubir)
       .then((resp) => {
         let data = {
           uid: this.usuario.uid,
           url: resp.metadata.fullPath,
         };
-        const deleteref = ref(this.storage, this.usuario.img.url)
-        deleteObject(deleteref).then(
-          resp => console.log('se elimino los archivos')
-        ).catch(err => console.log(err))
+
         this.subirImagenService
           .subirImagen('usuarios', data)
           .subscribe((resp) => {
