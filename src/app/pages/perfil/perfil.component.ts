@@ -98,6 +98,7 @@ export class PerfilComponent implements OnInit {
         .cambiarpassword(this.usuario.uid, this.passwordForm.value)
         .subscribe((resp:any) => {
           Swal.fire('Exito1!!','Contraseña actualizada con exito','success')
+          //falta cerrar el modal con jquery
         },(err:any)=>{
           Swal.fire('Cuidado!!!',err.error.msg,'error')
         });
