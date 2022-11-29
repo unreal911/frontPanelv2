@@ -3,11 +3,10 @@ import {
   Storage,
   ref,
   uploadBytes,
-  list,
-  listAll,
   getDownloadURL,
   deleteObject,
 } from '@angular/fire/storage';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { SubirImagenService } from 'src/app/services/subir-imagen.service';
 
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -23,16 +22,40 @@ export class PerfilComponent implements OnInit {
   public imgTemp: any;
   public archivoSubir: any;
   public urlImagenFirebase: any = 'https://avatars.akamai.steamstatic.com/46deb9d28238b87fc02ad664c413a4383e992615_full.jpg';
+  public perfilForm: any //ver este error al formgroup
 
   constructor(
     private usuarioService: UsuarioService,
     private storage: Storage,
-    private subirImagenService: SubirImagenService
+    private subirImagenService: SubirImagenService,
+    private fb: FormBuilder
+
   ) { }
 
   ngOnInit(): void {
     this.usuario = this.usuarioService.usuario;
     this.recuperarImagen();
+    this.perfilForm = this.fb.group({
+      nombre: [this.usuario.nombre],
+      email: [this.usuario.email],
+      telefono: [this.usuario.telefono]
+    })
+  }
+  cuardarCambios() {
+    console.log(this.perfilForm.valid)
+    if (this.perfilForm.value.email == this.usuario.email) {
+      delete this.perfilForm.value.email
+    }
+    console.log(this.perfilForm.value)
+    this.usuarioService.guardarUsuario(this.usuario.uid, this.perfilForm.value).subscribe(
+      (resp) => {
+        console.log(resp)
+        Swal.fire('Exito!!!', 'Cambios guardados correctamente', 'success')
+      }, (err) => {
+        console.log(err)
+        Swal.fire('Cuidado!!', err.error.errors[0].msg, 'error')
+      })
+    //hacer validaciones con el swalfire
   }
   cambiarImagen(evento: any) {
     const archivo = evento.target.files[0];
@@ -52,6 +75,8 @@ export class PerfilComponent implements OnInit {
     this.archivoSubir = null;
     return (this.imgTemp = null);
   }
+
+
   async subirimg() {
     console.log(this.archivoSubir);
     if (this.archivoSubir == undefined) {
