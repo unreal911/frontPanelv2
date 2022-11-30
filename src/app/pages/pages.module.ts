@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilComponent } from './perfil/perfil.component';
+import { CrearCategoriaComponent } from './mantenimiento/crear-categoria/crear-categoria.component';
 
 
 
@@ -20,7 +21,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     CategoriasComponent,
     ProductosComponent,
     PagesComponent,
-    PerfilComponent
+    PerfilComponent,
+    CrearCategoriaComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     CategoriasComponent,
     ProductosComponent,
     PagesComponent,
-    PerfilComponent
+    PerfilComponent,
+    CrearCategoriaComponent
   ]
 })
 export class PagesModule { }

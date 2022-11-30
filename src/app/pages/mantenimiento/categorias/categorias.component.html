@@ -1,1 +1,63 @@
-<p>categorias works!</p>
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <input type="text" class="form-control" placeholder="Buscar Categoria" (keyup)="buscar(txtTermino.value)"
+          #txtTermino>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="alert alert-primary" role="alert" *ngIf="cargando">
+  <div class="col-12 text-center">
+    <h4 class="alert-heading">Cargando</h4>
+    <i class="fa fa-spin fa-refresh"></i>
+    <p class="mb-0"></p>
+  </div>
+</div>
+<div class="col-12" *ngIf="!cargando">
+  <div class="card">
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col d-flex justify-content-end">
+          <button class="btn btn-outline-primary" [routerLink]="['/dashboard/crearCategoria']"> crear </button>
+        </div>
+      </div>
+      <h4 class="card-title">Categorias</h4>
+      <h6 class="card-subtitle">Usuarios cargados en mi aplicacion</h6>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>avatar</th>
+              <th>nombre</th>
+              <th>estado</th>
+              <th class="text-nowrap">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let categoria of categorias">
+              <td>{{categoria.img.url}}
+
+                <img src="../assets/images/users/1.jpg" alt="user" width="40" class="img-circle">
+              </td>
+              <td>{{categoria.nombre}}</td>
+              <td>{{categoria.estado}}</td>
+              <td class="text-nowrap">
+                <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i
+                    class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="btn btn-outline-primary">Atras</button>
+      <button type="button" class="btn btn-outline-primary">Siguiente</button>
+    </div>
+  </div>
+</div>
