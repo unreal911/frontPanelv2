@@ -40,9 +40,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let categoria of categorias">
-              <td>{{categoria.img.url}}
-
-                <img src="../assets/images/users/1.jpg" alt="user" width="40" class="img-circle">
+              <td>
+                <img [src]="categoria.img.url | imagenFirebase | async" alt="user" width="40" class="img-circle">
               </td>
               <td>{{categoria.nombre}}</td>
               <td>{{categoria.estado}}</td>
@@ -56,8 +55,8 @@
           </tbody>
         </table>
       </div>
-      <button type="button" class="btn btn-outline-primary">Atras</button>
-      <button type="button" class="btn btn-outline-primary">Siguiente</button>
+      <button type="button" class="btn btn-outline-primary" (click)="cambiarPagina(-5)">Atras</button>
+      <button type="button" class="btn btn-outline-primary" (click)="cambiarPagina(+5)">Siguiente</button>
     </div>
   </div>
 </div>

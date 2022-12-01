@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListarCategoria, Result } from 'src/app/interfaces/listarCategorias.interface';
 import { BusquedasService } from 'src/app/services/busquedas.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
-
+declare var $:any
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
@@ -19,13 +19,17 @@ export class CategoriasComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarCategorias()
+ 
+
   }
+
   cargarCategorias() {
-    this.categoriaService.cargarCategorias(5, this.desde).subscribe((resp) => {
+    this.categoriaService.cargarCategorias(this.desde, 5).subscribe((resp) => {
       this.totalCategorias = resp.total
       this.categorias = resp.results
       this.categoriasTemp = resp.results
       this.cargando = false
+      console.log(this.categorias)
     })
   }
   buscar(termino: string) {
@@ -42,6 +46,7 @@ export class CategoriasComponent implements OnInit {
   }
   cambiarPagina(valor: number) {
     this.desde += valor;
+    console.log(this.desde)
     if (this.desde < 0) {
       this.desde = 0;
     } else if (this.desde >= this.totalCategorias) {
