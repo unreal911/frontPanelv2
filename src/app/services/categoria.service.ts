@@ -71,5 +71,14 @@ export class CategoriaService {
 
     )
   }
+  actualizarCategoriaCampo(id: string, body: any) {
+    const url = `${base_url}/categoria/${id}`
+    return this.http.put(url, body, this.headers)
+  }
+  eliminarCategoria(uid: string) {
+    const url = `${base_url}/categoria/${uid}`
+    return this.http.delete(url, this.headers)
+
+  }
 
 }

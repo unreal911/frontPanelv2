@@ -41,14 +41,26 @@
           <tbody>
             <tr *ngFor="let categoria of categorias">
               <td>
-                <img [src]="categoria.img.url | imagenFirebase | async" alt="user" width="40" class="img-circle">
+                <img [src]="(categoria.img.url | imagenFirebase | async) " alt="user" width="40" class="img-circle">
               </td>
-              <td>{{categoria.nombre}}</td>
-              <td>{{categoria.estado}}</td>
+              <td>
+                <div class="input-group">
+                  <input type="text" [value]="categoria.nombre" #txtnombre class="form-control">
+                  <span class="input-group-btn"> <button (click)="guardarNombre(txtnombre.value,categoria.uid)"
+                      type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></button></span>
+                </div>
+              </td>
+              <td>
+                <select [(ngModel)]="categoria.estado" class="form-control"
+                  (change)="cambiarEstado(categoria.estado,categoria.uid)">
+                  <option [value]="true">Activo</option>
+                  <option [value]="false">Inactivo</option>
+                </select>
+              </td>
               <td class="text-nowrap">
                 <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i
                     class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i>
+                <a type="button" data-toggle="tooltip" data-original-title="Close" (click)="eliminarCategoria(categoria.uid)" > <i class="fa fa-close text-danger"></i>
                 </a>
               </td>
             </tr>

@@ -16,6 +16,7 @@ export class ImagenFirebasePipe implements PipeTransform {
       }
     ).catch(
       (resp) => {
+        this.imgfire='https://aeasa.com.mx/wp-content/uploads/2020/02/SIN-IMAGEN.jpg'
         console.log(resp)
       }
     )
