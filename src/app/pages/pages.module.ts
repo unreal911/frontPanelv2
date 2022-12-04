@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilComponent } from './perfil/perfil.component';
 import { CrearCategoriaComponent } from './mantenimiento/crear-categoria/crear-categoria.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { ProductoComponent } from './producto/producto.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { PipesModule } from '../pipes/pipes.module';
     PagesComponent,
     PerfilComponent,
     CrearCategoriaComponent,
+    ProductoComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import { PipesModule } from '../pipes/pipes.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    PipesModule
+    PipesModule,
+    ComponentsModule
 
   ], exports: [
     DashboardComponent,
@@ -41,6 +45,7 @@ import { PipesModule } from '../pipes/pipes.module';
     PagesComponent,
     PerfilComponent,
     CrearCategoriaComponent,
+    ProductoComponent
   ]
 })
 export class PagesModule { }

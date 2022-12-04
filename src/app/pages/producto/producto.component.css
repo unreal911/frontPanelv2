@@ -1,0 +1,205 @@
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    cursor: pointer;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/nunito/v25/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTk3j77e.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/nunito/v25/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTA3j77e.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/nunito/v25/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTs3j77e.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/nunito/v25/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTo3j77e.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/nunito/v25/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTQ3jw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+body{
+  font-family: 'Nunito', sans-serif;
+  font-size:16px;
+  line-height:1.4;
+}
+#uploadFiles{
+  max-width:600px;
+  margin:20px auto;
+}
+#uploadFiles .insUpload {
+  font-size: 12px;
+  margin:0 0 10px;
+}
+.user-files {
+  position: relative;
+  background: #fff;
+  margin-top: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 30px;
+  border-radius:4px;
+  box-shadow: 0px 1px 6px rgba(0,0,0,0.1);
+}
+.user-files ul{margin:0; padding:0;}
+.user-files li {
+  list-style:none;
+  padding: 10px 0;
+  border-bottom: 1px solid #f7f6f6;
+  font-size: 14px;
+  color: #000;
+}
+.user-files li:last-child{border-bottom: none;}
+.user-files .upld-list, .user-files .upd-iconName {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+}
+.user-files .upld-list, .user-files .upd-iconName {
+    -webkit-align-items: center;
+    align-items: center;
+}
+.user-files .upld-list {
+    position:relative;
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
+}
+.user-files .uploaded-icon {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    background-size: 52px;
+    margin-right: 15px;
+}
+.user-files .docName {
+    font-weight: 400;
+}
+.user-files .docType {
+    display: none;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+.upld-list .msg {
+    color: #ff0000;
+    font-size: 11px;
+    display: block;
+    margin-top: 2px;
+    display: none;
+}
+.user-files input {
+    display: none;
+}
+.user-files label {
+    position: relative;
+    display: inline-block;
+    color: #5e94c3;
+    font-size:15px;
+    font-weight:600;
+    padding: 10px;
+    right: -10px;
+    cursor: pointer;
+}
+.user-files .mdot{
+    width: 3px;
+    height: 3px;
+    border-radius: 100%;
+    background: #b3b3b3;
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.user-files .error{
+    color: #ff0000;
+    font-size: 13px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: -24px;
+    font-weight: 300;
+    display: none;
+}
+.user-files .uploaded-icon svg{
+  width:100%;
+  height:100%;
+}
+#uploadFiles svg{fill:#5a5a5a;}
+#uploadFiles .uploaded svg{fill:#23D717;}
+.upld-list .closeStyle, .uploaded .upld-list label{
+  display: none;
+}
+.uploaded .upld-list .closeStyle{
+  display: block;
+}
+.upld-list .closeStyle {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.upld-list .closeStyle:before, .upld-list .closeStyle:after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 1.5px;
+    background: #7b7b7b;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.upld-list .closeStyle:before {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.upld-list .closeStyle:after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.submit-btn {
+  background: #5e94c3;
+  border: 1px solid #5e94c3;
+  color: #fff;
+  padding: 16px 39px;
+  font-size: 17px;
+  border-radius: 30px;
+  outline:0;
+}

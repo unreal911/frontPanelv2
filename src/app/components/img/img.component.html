@@ -1,0 +1,11 @@
+<div class="image-upload">
+  <label for="file-input">
+    <img src="https://cdn-icons-png.flaticon.com/512/51/51862.png" class="" width="50" />
+  </label>
+  <input type="file" name="" id="file-input" (change)="SubirFoto($event)" />
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let imagen of imagenes;let i=index"><img [src]="imagen.imagenTemporal" class="" height="50" />
+    {{imagen.archivo.name}} <button type="button" class="btn btn-danger" (click)="borrarimg(imagen.archivo.name,i)"><i class="fa fa-trash-o"></i></button> </li>
+</ul>
